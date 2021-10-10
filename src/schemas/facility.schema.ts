@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type FacilityDocument = Facility & Document;
 
-@Schema()
+@Schema({ collection: 'facilities' })
 export class Facility {
   @Prop({ required: true })
   city: string;
@@ -20,11 +20,11 @@ export class Facility {
   @Prop({ required: true })
   adressJibun: string;
 
-  @Prop({ required: true })
-  lat: string;
-
-  @Prop({ required: true })
-  lng: string;
+  @Prop({ required: true, type: 'object' })
+  location: {
+    type: 'Point';
+    coordinates: [number, number]; // lng, lat (경도, 위도)
+  };
 
   @Prop({ required: true })
   description: string;
@@ -65,4 +65,7 @@ export class Facility {
   providerName: string;
 }
 
-export const FacilitySchema = SchemaFactory.createForClass(Facility);
+const FacilitySchema = SchemaFactory.createForClass(Facility);
+FacilitySchema.index({ location: '2dsphere' });
+
+export { FacilitySchema };

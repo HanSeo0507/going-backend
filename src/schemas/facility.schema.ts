@@ -6,6 +6,9 @@ export type FacilityDocument = Facility & Document;
 @Schema({ collection: 'facilities' })
 export class Facility {
   @Prop({ required: true })
+  name: string;
+
+  @Prop({ required: true })
   city: string;
 
   @Prop({ required: true })

@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { FacilitiesModule } from './facilities/facilities.module';
 import { SearchModule } from './search/search.module';
+import { RoutesModule } from './routes/routes.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -20,6 +21,7 @@ import { SearchModule } from './search/search.module';
     }),
     FacilitiesModule,
     SearchModule,
+    RoutesModule,
   ],
   controllers: [],
   providers: [],

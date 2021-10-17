@@ -10,6 +10,9 @@ export class Route {
 
   @Prop({ required: true })
   coords: [number, number][];
+
+  @Prop({ required: true })
+  description: string;
 }
 
 const RouteSchema = SchemaFactory.createForClass(Route);

@@ -6,4 +6,7 @@ export class CreateRouteDTO {
 
   @IsArray({ each: true })
   readonly coords: [number, number][];
+
+  @IsString()
+  readonly description: string;
 }
